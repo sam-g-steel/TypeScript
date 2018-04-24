@@ -19776,6 +19776,14 @@ namespace ts {
                         return resultType;
                     }
 
+                    if(leftType === rightType){
+                        let properties = (leftType as any).members;
+                        if (properties && operator === SyntaxKind.PlusToken && properties.has("+")) {
+                            eval('console.log("operator overloading coming soon!")');
+                            return leftType;
+                        }
+                    }
+
                     if (!resultType) {
                         reportOperatorError();
                         return anyType;

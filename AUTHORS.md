@@ -251,7 +251,8 @@ TypeScript is authored by:
 * Rowan Wyborn
 * Ryan Cavanaugh
 * Ryohei Ikegami
-* Sam El-Husseini 
+* Sam El-Husseini
+* Samuel Sylvester
 * Sarangan Rajamanickam
 * Sean Barag 
 * Sergey Rubanov
