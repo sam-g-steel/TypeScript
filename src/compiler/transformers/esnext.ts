@@ -214,13 +214,26 @@ namespace ts {
             return visitEachChild(node, visitor, context);
         }
 
+        function visitOverloadedOperatorExpression(node: BinaryExpression) {
+            // Transforms `a ** b` into `Math.pow(a, b)`
+            const left = visitNode(node.left, visitor, isExpression);
+            const right = visitNode(node.right, visitor, isExpression);
+            return createOperatorOverloadCall(left, right, node.transformNotes.operatorOverload, /*location*/ node);
+        }
+
         /**
          * Visits a BinaryExpression that contains a destructuring assignment.
          *
          * @param node A BinaryExpression node.
          */
         function visitBinaryExpression(node: BinaryExpression, noDestructuringValue: boolean): Expression {
-            if (isDestructuringAssignment(node) && node.left.transformFlags & TransformFlags.ContainsObjectRest) {
+            if(node.transformNotes && node.transformNotes.operatorOverload) {
+                // eval('console.log("operator overloading transform coming soon!")');
+                // createMemberAccessForPropertyName(node.left, "+")
+                // createFunctionCall()
+                return visitOverloadedOperatorExpression(node);
+            }
+            else if (isDestructuringAssignment(node) && node.left.transformFlags & TransformFlags.ContainsObjectRest) {
                 return flattenDestructuringAssignment(
                     node,
                     visitor,

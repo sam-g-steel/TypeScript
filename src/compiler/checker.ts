@@ -19734,6 +19734,30 @@ namespace ts {
                         (suggestedOperator = getSuggestedBooleanOperator(operatorToken.kind)) !== undefined) {
                         error(errorNode || operatorToken, Diagnostics.The_0_operator_is_not_allowed_for_boolean_types_Consider_using_1_instead, tokenToString(operatorToken.kind), tokenToString(suggestedOperator));
                     }
+                    else if(leftType === rightType){
+                        let properties = (leftType as any).members;
+                        if (properties && operator === SyntaxKind.MinusToken && properties.has("___minus")) {
+                            eval('console.log("warning: operator overloading is an experimental feature!")');
+                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            left.parent.transformNotes = left.parent.transformNotes || {};
+                            left.parent.transformNotes.operatorOverload = "__minus";
+                            return leftType;
+                        }
+                        if (properties && operator === SyntaxKind.AsteriskToken && properties.has("___asterisk")) {
+                            eval('console.log("warning: operator overloading is an experimental feature!")');
+                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            left.parent.transformNotes = left.parent.transformNotes || {};
+                            left.parent.transformNotes.operatorOverload = "__asterisk";
+                            return leftType;
+                        }
+                        if (properties && operator === SyntaxKind.SlashToken && properties.has("___slash")) {
+                            eval('console.log("warning: operator overloading is an experimental feature!")');
+                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            left.parent.transformNotes = left.parent.transformNotes || {};
+                            left.parent.transformNotes.operatorOverload = "__slash";
+                            return leftType;
+                        }
+                    }
                     else {
                         // otherwise just check each operand separately and report errors as normal
                         const leftOk = checkArithmeticOperandType(left, leftType, Diagnostics.The_left_hand_side_of_an_arithmetic_operation_must_be_of_type_any_number_or_an_enum_type);
@@ -19778,8 +19802,11 @@ namespace ts {
 
                     if(leftType === rightType){
                         let properties = (leftType as any).members;
-                        if (properties && operator === SyntaxKind.PlusToken && properties.has("+")) {
-                            eval('console.log("operator overloading coming soon!")');
+                        if (properties && operator === SyntaxKind.PlusToken && properties.has("___plus")) {
+                            eval('console.log("warning: operator overloading is an experimental feature!")');
+                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            left.parent.transformNotes = left.parent.transformNotes || {};
+                            left.parent.transformNotes.operatorOverload = "__plus";
                             return leftType;
                         }
                     }

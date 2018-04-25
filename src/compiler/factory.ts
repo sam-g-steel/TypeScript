@@ -3124,6 +3124,17 @@ namespace ts {
         );
     }
 
+    export function createOperatorOverloadCall(left: Expression, right: Expression, operator : string, location?: TextRange) {
+        return setTextRange(
+            createCall(
+                createPropertyAccess(right, operator),
+                /*typeArguments*/ undefined,
+                [left]
+            ),
+            location
+        );
+    }
+
     function createReactNamespace(reactNamespace: string, parent: JsxOpeningLikeElement | JsxOpeningFragment) {
         // To ensure the emit resolver can properly resolve the namespace, we need to
         // treat this identifier as if it were a source tree node by clearing the `Synthesized`
