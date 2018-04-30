@@ -2919,6 +2919,14 @@ namespace ts {
             || operatorTokenKind === SyntaxKind.AsteriskAsteriskEqualsToken) {
             // Exponentiation is ES2016 syntax.
             transformFlags |= TransformFlags.AssertES2016;
+        }else if (
+            operatorTokenKind === SyntaxKind.AsteriskToken ||
+            operatorTokenKind === SyntaxKind.MinusToken ||
+            operatorTokenKind === SyntaxKind.PlusToken ||
+            operatorTokenKind === SyntaxKind.SlashToken
+        ){
+            // and possibly ESNext if they operator overloads
+            transformFlags |= TransformFlags.AssertESNext;
         }
 
         node.transformFlags = transformFlags | TransformFlags.HasComputedFlags;

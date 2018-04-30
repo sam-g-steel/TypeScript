@@ -10,20 +10,20 @@ class vec2 {
         this.y = y;
     }
 
-    __asterisk(right){
-        return new vec2(this.x * right.x, this.y * right.y);
+    __asterisk(left){
+        return new vec2(left.x * this.x, left.y * this.y);
     }
 
-    __minus (right) {
-        return new vec2(this.x - right.x, this.y - right.y);
+    __minus (left) {
+        return new vec2(left.x - this.x, left.y - this.y);
     }
 
-    __plus (right) {
-        return new vec2(this.x + right.x, this.y + right.y);
+    __plus (left) {
+        return new vec2(left.x + this.x, left.y + this.y);
     }
 
-    __slash(right){
-        return new vec2(this.x / right.x, this.y / right.y);
+    __slash(left){
+        return new vec2(left.x / this.x, left.y / this.y);
     }
 
     print(name?: string){
@@ -41,5 +41,13 @@ a.print("a");
 b.print("b");
 
 let c : vec2 = a + b * new vec2(0.5);
+
+c.print("c");
+
+ c = a * b;// new v2(1.1) * new v2(0.5);
+
+c.print("c");
+
+c = new vec2(1) / new vec2(2);
 
 c.print("c");

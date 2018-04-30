@@ -19738,21 +19738,21 @@ namespace ts {
                         let properties = (leftType as any).members;
                         if (properties && operator === SyntaxKind.MinusToken && properties.has("___minus")) {
                             eval('console.log("warning: operator overloading is an experimental feature!")');
-                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            //left.parent.transformFlags |= TransformFlags.AssertESNext  | TransformFlags.HasComputedFlags; // TODO: use another flag
                             left.parent.transformNotes = left.parent.transformNotes || {};
                             left.parent.transformNotes.operatorOverload = "__minus";
                             return leftType;
                         }
                         if (properties && operator === SyntaxKind.AsteriskToken && properties.has("___asterisk")) {
                             eval('console.log("warning: operator overloading is an experimental feature!")');
-                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            //left.parent.transformFlags |= TransformFlags.AssertESNext  | TransformFlags.HasComputedFlags; // TODO: use another flag
                             left.parent.transformNotes = left.parent.transformNotes || {};
                             left.parent.transformNotes.operatorOverload = "__asterisk";
                             return leftType;
                         }
                         if (properties && operator === SyntaxKind.SlashToken && properties.has("___slash")) {
                             eval('console.log("warning: operator overloading is an experimental feature!")');
-                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            //left.parent.transformFlags |= TransformFlags.AssertESNext  | TransformFlags.HasComputedFlags; // TODO: use another flag
                             left.parent.transformNotes = left.parent.transformNotes || {};
                             left.parent.transformNotes.operatorOverload = "__slash";
                             return leftType;
@@ -19804,7 +19804,7 @@ namespace ts {
                         let properties = (leftType as any).members;
                         if (properties && operator === SyntaxKind.PlusToken && properties.has("___plus")) {
                             eval('console.log("warning: operator overloading is an experimental feature!")');
-                            left.parent.transformFlags |= TransformFlags.ContainsESNext; // TODO: use another flag
+                            //left.parent.transformFlags |= TransformFlags.AssertESNext  | TransformFlags.HasComputedFlags; // TODO: use another flag
                             left.parent.transformNotes = left.parent.transformNotes || {};
                             left.parent.transformNotes.operatorOverload = "__plus";
                             return leftType;

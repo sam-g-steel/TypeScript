@@ -1,8 +1,8 @@
 {
-    "name": "typescript",
-    "author": "Microsoft Corp.",
+    "name": "ts-plus",
+    "author": "Samuel Sylvester",
     "homepage": "http://typescriptlang.org/",
-    "version": "2.9.0-plus",
+    "version": "2.8.1",
     "license": "Apache-2.0",
     "description": "TypeScript is a language for application scale JavaScript development",
     "keywords": [
@@ -13,11 +13,11 @@
         "javascript"
     ],
     "bugs": {
-        "url": "https://github.com/Microsoft/TypeScript/issues"
+        "url": "https://github.com/sam-g-steel/TypeScript/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Microsoft/TypeScript.git"
+        "url": "https://github.com/sam-g-steel/TypeScript.git"
     },
     "main": "./lib/typescript.js",
     "typings": "./lib/typescript.d.ts",
